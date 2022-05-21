@@ -15,12 +15,16 @@ int _printf(const char *format, ...)
 
 	va_list ap;
 	va_start(ap, format);
-
+	
 	do
 	{
 		if (format[i] == '%')
 		{
-			if (format[i + 1] == 'c')
+			if (format[i + 1] == 's')
+			{
+				count += print(va_arg(ap, char*));
+			}
+			else if (format[i + 1] == 'c')
 			{
 				a = va_arg(ap, int);
 				putchar(a);
@@ -35,15 +39,20 @@ int _printf(const char *format, ...)
 	}
 	while (format[++i]);
 	va_end(ap);
+
 	return (count);
 }
 
-int main()
+	/*Function to print the string*/
+int print(char *ar)
 {
-	int x;
-	char alph = 'A';
-
-	x = _printf("This is %c, so cool", alph);
-	printf("\nWe printed %d characters", x);
-	return 0;
+	int j = 0;
+	int strcount = 0;
+	do
+	{
+		putchar(ar[j]);
+		strcount++;
+	}
+	while (ar[++j]);
+	return (strcount);
 }
