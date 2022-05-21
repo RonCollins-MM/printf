@@ -1,13 +1,24 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include "main.h"
+
+int main()
+{
+	int ccount;
+	char* name = "Holberton School";
+
+	ccount = _printf("I am a student at %s yeeh!", name);
+	printf("\nPrinted %d characters\n", ccount);
+	return 0;
+}
+
 /**
  * _printf - prints strings and charaters
  * @format: a pointer to char
  *
  * Return: number of character printed
  **/
-int _printf(const char *format, ...)
+/*int _printf(const char *format, ...)
 {
 	int i = 0;
 	int count = 0;
@@ -35,7 +46,7 @@ int _printf(const char *format, ...)
 	va_end(ap);
 
 	return (count);
-}
+}*/
 
 	/*Function to print the string*/
 int print(char *ar)
@@ -51,12 +62,3 @@ int print(char *ar)
 	return (strcount);
 }
 
-int main()
-{
-	int x;
-	char *name = "ALX";
-
-	x = _printf("I am a student at %s yeeh!", name);
-	printf("\nWe printed %d characters", x);
-	return 0;
-}

@@ -1,13 +1,26 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include "main.h"
+
+int main()
+{
+	int ccount;
+	char a = 'G';
+
+	ccount = _printf("This is %c, so cool", a);
+	printf("\nPrinted %d chars\n", ccount);
+	return 0;
+}
+
+
+
 /**
  * _printf - prints strings and charaters
  * @format: a pointer to char
  *
  * Return: number of character printed
  **/
-int _printf(const char *format, ...)
+/* int _printf(const char *format, ...)
 {
 	int i = 0;
 	int count = 0;
@@ -36,11 +49,4 @@ int _printf(const char *format, ...)
 	while (format[++i]);
 	va_end(ap);
 	return (count);
-}
-
-int main()
-{
-
-	_printf("This is %c, so cool", 'H');
-	return 0;
-}
+}*/
