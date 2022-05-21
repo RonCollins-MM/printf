@@ -1,58 +1,60 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include "main.h"
+
 /**
- * _printf - prints strings and charaters
- * @format: a pointer to char
+ * _printf - prints strings and charaters passed by user
+ * @format: The string passed that contains the format
  *
- * Return: number of character printed
+ * Return: number of character printed (on success), -1 on error
  **/
 int _printf(const char *format, ...)
 {
 	int i = 0;
 	int count = 0;
-	char a;
-
 	va_list ap;
+
 	va_start(ap, format);
-	
-	do
-	{
+	do {
 		if (format[i] == '%')
 		{
-			if (format[i + 1] == 's')
+			i++;
+			if (format[i] == 's')
 			{
 				count += print(va_arg(ap, char*));
 			}
-			else if (format[i + 1] == 'c')
+			else if (format[i] == 'c')
 			{
-				a = va_arg(ap, int);
-				putchar(a);
+				putchar(va_arg(ap, int));
 			}
-			i++;
 		}
-		else 
+		else
 		{
 			putchar(format[i]);
 			count++;
 		}
-	}
-	while (format[++i]);
+	} while (format[++i]);
 	va_end(ap);
 
 	return (count);
 }
 
-	/*Function to print the string*/
-int print(char *ar)
+/**
+ * print_string - Prints a string onto the Stdout
+ * @ar: The string to be printed
+ *
+ * Return: The number of characters printed (on success),
+ *	-1 on Error
+ */
+int print_string(char *ar)
 {
 	int j = 0;
 	int strcount = 0;
-	do
-	{
+
+	do {
 		putchar(ar[j]);
 		strcount++;
-	}
-	while (ar[++j]);
+	} while (ar[++j]);
+
 	return (strcount);
 }
