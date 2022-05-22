@@ -13,43 +13,41 @@ int _printf(const char *format, ...)
 	int i = 0;
 	int count = 0;
 	va_list ap;
-	va_start(ap, format);
-	
-	if (format == NULL || *format == '\0')
-		{
-			return(0);
-		}
 
+	if (format == NULL || *format == '\0')
+		return (0);
+	va_start(ap, format);
 	do {
 		if (format[i] == '%')
 		{
 			i++;
 			if (format[i] == 's')
 			{
-				count += print_string(ap);
+				count += print_string(va_arg(ap, char*));
 			}
 			else if (format[i] == 'c')
 			{
-				count += _putchar(va_arg(ap, int));
+				putchar(va_arg(ap, int));
+				count++;
 			}
 			else if (format[i] == '%')
 			{
-				count += _putchar('%');
+				putchar('%');
+				count++;
 			}
 			else
 			{
-				_putchar('%');
-				_putchar(format[i]);
+				putchar('%');
+				putchar(format[i]);
 				count += 2;
 			}
 		}
 		else
 		{
-			count += _putchar(format[i]);
+			putchar(format[i]);
+			count++;
 		}
 	} while (format[++i]);
-	
 	va_end(ap);
-
 	return (count);
 }

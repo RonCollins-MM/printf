@@ -9,23 +9,24 @@
  * Return: The number of characters printed
  *
  */
-int print_string(va_list ap)
+int print_string(char *ar)
 {
 	int j = 0;
 	int strcount = 0;
 
-	char *ar = va_arg(ap, char *);
-
-	if (!ar)
-		ar = "(null)";
-
-	if (ar[0] == '\0')
-		return (-1);
-
+	if (ar == NULL)
+	{
+		fputs("(null)", stdout);
+		strcount = 6;
+		return (strcount);
+	}
+	else if (*ar == '\0')
+	{
+		return (0);
+	}
 	do {
-
-		strcount += _putchar(ar[j]);
-
+		putchar(ar[j]);
+		strcount++;
 	} while (ar[++j]);
 
 	return (strcount);
