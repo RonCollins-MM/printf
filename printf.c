@@ -15,10 +15,7 @@ int _printf(const char *format, ...)
 	va_list ap;
 
 	if (format == NULL || *format == '\0')
-	{
-		return(0);
-	}
-
+		return (0);
 	va_start(ap, format);
 	do {
 		if (format[i] == '%')
@@ -52,26 +49,5 @@ int _printf(const char *format, ...)
 		}
 	} while (format[++i]);
 	va_end(ap);
-
 	return (count);
-}
-
-/**
- * print_string - Prints a string onto the Stdout
- * @ar: The string to be printed
- *
- * Return: The number of characters printed
- *
- */
-int print_string(char *ar)
-{
-	int j = 0;
-	int strcount = 0;
-
-	do {
-		putchar(ar[j]);
-		strcount++;
-	} while (ar[++j]);
-
-	return (strcount);
 }
