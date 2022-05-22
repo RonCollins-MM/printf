@@ -9,14 +9,23 @@
  * Return: The number of characters printed
  *
  */
-int print_string(char *ar)
+int print_string(va_list ap)
 {
 	int j = 0;
 	int strcount = 0;
 
+	char *ar = va_arg(ap, char *);
+
+	if (!ar)
+		ar = "(null)";
+
+	if (ar[0] == '\0')
+		return (-1);
+
 	do {
-		putchar(ar[j]);
-		strcount++;
+
+		strcount += _putchar(ar[j]);
+
 	} while (ar[++j]);
 
 	return (strcount);
