@@ -6,13 +6,18 @@
  * _printf - prints strings and charaters passed by user
  * @format: The string passed that contains the format
  *
- * Return: number of character printed (on success), -1 on error
+ * Return: number of character printed
  **/
 int _printf(const char *format, ...)
 {
 	int i = 0;
 	int count = 0;
 	va_list ap;
+
+	if (format == NULL || *format == '\0')
+	{
+		return(0);
+	}
 
 	va_start(ap, format);
 	do {
@@ -27,6 +32,17 @@ int _printf(const char *format, ...)
 			{
 				putchar(va_arg(ap, int));
 				count++;
+			}
+			else if (format[i] == '%')
+			{
+				putchar('%');
+				count++;
+			}
+			else
+			{
+				putchar('%');
+				putchar(format[i]);
+				count += 2;
 			}
 		}
 		else
@@ -44,8 +60,8 @@ int _printf(const char *format, ...)
  * print_string - Prints a string onto the Stdout
  * @ar: The string to be printed
  *
- * Return: The number of characters printed (on success),
- *	-1 on Error
+ * Return: The number of characters printed
+ *
  */
 int print_string(char *ar)
 {
