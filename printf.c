@@ -16,6 +16,7 @@ int _printf(const char *format, ...)
 
 	if (format == NULL || *format == '\0')
 		return (0);
+
 	va_start(ap, format);
 	do {
 		if (format[i] == '%')
@@ -48,6 +49,8 @@ int _printf(const char *format, ...)
 			count++;
 		}
 	} while (format[++i]);
+
 	va_end(ap);
+
 	return (count);
 }

@@ -30,6 +30,10 @@ int _printf(const char *format, ...)
 				putchar(va_arg(ap, int));
 				count++;
 			}
+			else if (format[i] == 'd' || format[i] == 'i')
+			{
+				
+			}
 			else if (format[i] == '%')
 			{
 				putchar('%');
